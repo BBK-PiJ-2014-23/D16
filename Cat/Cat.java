@@ -8,7 +8,7 @@ import java.io.*;
 public class Cat
 {
     public static void main(String[] args) {
-        File currentDir = new File("./");
+        File currentDir = new File(".");
         File file = new File(currentDir, args[0]);
         BufferedReader in = null;
         try {
@@ -22,13 +22,17 @@ public class Cat
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            closeReader(in);
+        }
+    }
+
+    private static void closeReader(Reader reader) {
+        try {
+            if (reader != null) {
+                reader.close();
             }
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }
