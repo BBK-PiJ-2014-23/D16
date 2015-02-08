@@ -8,7 +8,7 @@ import java.io.*;
 public class Ls
 {
     public static void main(String[] args) {
-        File currentDir = new File("./");
+        File currentDir = new File(".");
         String[] list = currentDir.list();
         for (int i = 0; i < list.length; i++) {
             System.out.println(list[i]);
