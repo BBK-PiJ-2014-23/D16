@@ -8,21 +8,23 @@ import java.io.*;
 public class Cat
 {
     public static void main(String[] args) {
-        File currentDir = new File(".");
-        File file = new File(currentDir, args[0]);
-        BufferedReader in = null;
-        try {
-            in = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = in.readLine()) != null) {
-                System.out.println(line);
+        for (int i = 0; i < args.length; i++) {
+            File currentDir = new File(".");
+            File file = new File(currentDir, args[i]);
+            BufferedReader in = null;
+            try {
+                in = new BufferedReader(new FileReader(file));
+                String line;
+                while ((line = in.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } catch (FileNotFoundException ex) {
+                System.out.println("File " + file + " not found.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } finally {
+                closeReader(in);
             }
-        } catch (FileNotFoundException ex) {
-            System.out.println("File " + file + " not found.");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            closeReader(in);
         }
     }
 
