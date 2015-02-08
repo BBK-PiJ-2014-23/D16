@@ -18,7 +18,7 @@ public class Cat
                 System.out.println(line);
             }
         } catch (FileNotFoundException ex) {
-            System.out.println("File not found.");
+            System.out.println("File " + file + " not found.");
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
